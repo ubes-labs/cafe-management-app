@@ -4,8 +4,8 @@
     "module": "CommonJS",
     "target": "ES2022",
     "outDir": "../dist-electron",
-    "rootDir": ".",
+    "rootDir": "..",
     "types": ["node"]
   },
-  "include": ["./**/*.ts"]
+  "include": ["../electron/**/*.ts", "../shared/**/*.ts"]
 }
