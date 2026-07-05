@@ -1,0 +1,46 @@
+name: Release to Github
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: app-release
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and release ng application
+    runs-on: windows-latest
+
+    environment:
+      name: app-release
+
+    steps:
+      - name: Checkout Source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: npm
+          cache-dependency-path: cafe-management-ui/package-lock.json
+
+      - name: Install npm dependencies
+        working-directory: ./cafe-management-ui
+        run: npm ci
+
+      - name: Execute Unit tests
+        working-directory: ./cafe-management-ui
+        run: npm test -- --watch=false
+
+      - name: Build ng application
+        working-directory: ./cafe-management-ui
+        run: npm run build -- --configuration production
