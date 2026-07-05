@@ -14,6 +14,13 @@
           "style": "scss"
         }
       },
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "hi": "src/locale/messages.hi.xlf",
+          "bn": "src/locale/messages.bn.xlf"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -30,7 +37,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/tailwind.css", "src/styles.scss"],
             "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
@@ -71,6 +78,13 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "outputPath": "src/locales",
+            "format": "xlf2"
+          }
         }
       }
     }
