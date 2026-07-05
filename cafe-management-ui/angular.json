@@ -17,8 +17,8 @@
       "i18n": {
         "sourceLocale": "en",
         "locales": {
-          "hi": "src/locale/messages.hi.xlf",
-          "bn": "src/locale/messages.bn.xlf"
+          "hi": "src/locales/messages.hi.xlf",
+          "bn": "src/locales/messages.bn.xlf"
         }
       },
       "root": "",
